@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { Button, View } from "react-native";
+import MyKeyboard from "./src/calculator/component/MyKeyboard";
 
 function HomeScreen({ navigation }) {
   return (
@@ -23,6 +24,14 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
+function CalculatorScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <MyKeyboard/>
+    </View>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -31,6 +40,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Calculator" component={CalculatorScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
