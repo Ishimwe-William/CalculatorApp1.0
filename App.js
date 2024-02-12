@@ -1,47 +1,25 @@
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import { Button, View } from "react-native";
-import MyKeyboard from "./src/calculator/component/MyKeyboard";
+import React, {createRef} from 'react'
+import { StyleSheet} from 'react-native'
+import {NavigationContainer} from "@react-navigation/native";
+import DrawerNavigator from "./src/DrawerNavigator";
 
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button onPress={navigation.openDrawer} title="Open navigation drawer" />
-      <Button
-        onPress={() => navigation.navigate("Notifications")}
-        title="Go to notifications"
-      />
-    </View>
-  );
+// store reference to navigation object
+const navigationRef = createRef()
+const nav = () => navigationRef.current
+
+const App = () => {
+    return (
+        <NavigationContainer ref={navigationRef}>
+            <DrawerNavigator nav={nav}/>
+        </NavigationContainer>
+    )
 }
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Button onPress={navigation.openDrawer} title="Open navigation drawer" />
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
+const styles = StyleSheet.create({
+    safeArea: {
+        flex: 1,
+        overflow: 'hidden',
+    },
+})
 
-function CalculatorScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <MyKeyboard/>
-    </View>
-  );
-}
-
-const Drawer = createDrawerNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-        <Drawer.Screen name="Calculator" component={CalculatorScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
+export default App

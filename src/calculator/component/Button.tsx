@@ -16,9 +16,9 @@ export default function Button({title, onPress, isBlue, isGray,}: ButtonProps) {
     return (
         <Pressable
             style={{
-                width: 70,
-                height: 60,
-                borderRadius: 24,
+                width: 45,
+                height: 45,
+                borderRadius: 25,
                 backgroundColor: isBlue ? myColors.blue : isGray ? myColors.btnGray
                     : theme === "light" ? myColors.white : myColors.btnDark,
                 justifyContent: "center",

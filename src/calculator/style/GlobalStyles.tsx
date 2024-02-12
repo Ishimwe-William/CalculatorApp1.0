@@ -4,11 +4,11 @@ import { myColors} from "./colors";
 export const Styles = StyleSheet.create({
     // Buttons
     smallTextLight: {
-        fontSize: 40,
+        fontSize: 20,
         color: myColors.white,
     },
     smallTextDark: {
-        fontSize: 40,
+        fontSize: 20,
         color: myColors.black,
     },
     // Keyboard
